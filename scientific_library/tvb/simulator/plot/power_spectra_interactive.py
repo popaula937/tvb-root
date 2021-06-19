@@ -58,7 +58,7 @@ Usage
 """
 
 import numpy
-import pylab
+import matplotlib.pyplot as plt
 import matplotlib.widgets as widgets
 from tvb.simulator.common import get_logger
 import tvb.datatypes.time_series as time_series_datatypes
@@ -196,7 +196,7 @@ class PowerSpectraInteractive(HasTraits):
         #Plot timeseries
         self.plot_spectra()
 
-        pylab.show()
+        plt.show()
 
     ##------------------------------------------------------------------------##
     ##------------------ Functions for building the figure -------------------##
@@ -206,16 +206,16 @@ class PowerSpectraInteractive(HasTraits):
         time_series_type = self.time_series.__class__.__name__
         try:
             figure_window_title = "Interactive power spectra: " + time_series_type
-            pylab.close(figure_window_title)
-            self.ifft_fig = pylab.figure(num = figure_window_title,
+            plt.close(figure_window_title)
+            self.ifft_fig = plt.figure(num = figure_window_title,
                                         figsize = (16, 8),
                                         facecolor = BACKGROUNDCOLOUR, 
                                         edgecolor = EDGECOLOUR)
         except ValueError:
-            LOG.info("My life would be easier if you'd update your PyLab...")
+            LOG.info("My life would be easier if you'd update your Pyplot...")
             figure_number = 42
-            pylab.close(figure_number)
-            self.ifft_fig = pylab.figure(num = figure_number, 
+            plt.close(figure_number)
+            self.ifft_fig = plt.figure(num = figure_number, 
                                          figsize = (16, 8), 
                                          facecolor = BACKGROUNDCOLOUR, 
                                          edgecolor = EDGECOLOUR)
@@ -372,7 +372,7 @@ class PowerSpectraInteractive(HasTraits):
         """
         self.xscale = xscale
         self.fft_ax.set_xscale(self.xscale)
-        pylab.draw()
+        plt.draw()
 
 
     def update_yscale(self, yscale):
@@ -382,7 +382,7 @@ class PowerSpectraInteractive(HasTraits):
         """
         self.yscale = yscale
         self.fft_ax.set_yscale(self.yscale)
-        pylab.draw()
+        plt.draw()
 
 
     def update_mode(self, mode):
@@ -478,7 +478,7 @@ class PowerSpectraInteractive(HasTraits):
 #        if self.show_sem:
 #            self.plot_sem(self)
 
-        pylab.draw()
+        plt.draw()
 
 
 if __name__ == "__main__":
