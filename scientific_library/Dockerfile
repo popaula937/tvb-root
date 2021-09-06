@@ -1,12 +1,19 @@
-FROM continuumio/miniconda3
+# FROM continuumio/miniconda3
+FROM nvidia/cuda:11.2.2-devel-ubuntu20.04
 
 RUN apt-get -y update && apt-get -y install build-essential gcc
+RUN apt-get install -y curl 
+
+WORKDIR /opt
+RUN curl -LO https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+RUN bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda
+ENV PATH=/opt/conda/bin:$PATH
 
 RUN conda install python=3.7 nomkl numba scipy numpy networkx scikit-learn cython pip numexpr psutil \
     pytest pytest-cov pytest-benchmark pytest-mock matplotlib \
     psycopg2 pytables scikit-image==0.14.2 simplejson cherrypy docutils
 
-RUN apt-get install -y zip
+RUN apt-get install -y zip wget
 RUN cd /opt \
  && wget -q https://zenodo.org/record/4263723/files/tvb_data.zip?download=1 -O tvb_data.zip \
  && mkdir tvb_data \
@@ -17,8 +24,6 @@ RUN cd /opt \
 
 RUN pip install h5py>=2.10 tvb-gdist pytest-xdist sqlalchemy
 
-RUN pip install mako
+RUN pip install mako pylems lxml pycuda
 
-RUN pip install pylems
-
-RUN pip install lxml
+RUN apt-get install -y nvidia-utils-470
