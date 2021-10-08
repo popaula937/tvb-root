@@ -54,7 +54,7 @@ class FormWithRanges(Form):
 
         result = []
         for range_param in parameters_for_pse:
-            range_obj = RangeParameter(range_param.field_name, float, range_param.domain,
+            range_obj = RangeParameter(range_param.label, float, range_param.domain,
                                        isinstance(range_param, NArray))
             result.append(range_obj)
         return result

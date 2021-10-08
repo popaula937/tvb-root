@@ -55,7 +55,8 @@ class SimulatorRangeParameters(object):
 
         return [conduction_speed, connectivity]
 
-    def _ensure_correct_prefix_for_param_name(self, prefix, param):
+    @staticmethod
+    def _ensure_correct_prefix_for_param_name(prefix, param):
         prefix = prefix + '.'
         if not param.name.startswith(prefix):
             param_full_name = prefix + param.name
