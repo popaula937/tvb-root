@@ -195,7 +195,7 @@ class ReducedWongWangExcInh(ModelNumbaDfun):
         doc="""Global coupling scaling""")
 
     lamda = NArray(
-        label=":math:`\lambda`",
+        label=r":math:`\lambda`",
         default=numpy.array([0.0, ]),
         domain=Range(lo=0.0, hi=1.0, step=0.01),
         doc="""Inhibitory global coupling scaling""")
@@ -284,4 +284,3 @@ class ReducedWongWangExcInh(ModelNumbaDfun):
                             self.W_i, self.J_i,
                             self.G, self.lamda, self.I_o, self.I_ext)
         return deriv.T[..., numpy.newaxis]
-
