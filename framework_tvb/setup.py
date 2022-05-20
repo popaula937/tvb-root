@@ -45,7 +45,7 @@ VERSION = "2.4"
 TVB_TEAM = "Mihai Andrei, Lia Domide, Stuart Knock, Bogdan Neacsa, Paula Popa, Paula Sansz Leon, Marmaduke Woodman"
 
 TVB_INSTALL_REQUIREMENTS = ["alembic", "allensdk", "cherrypy", "cryptography", "flask==1.1.4", "flask-restx",
-                            "formencode", "gevent", "h5py<3", "Jinja2<2.12.0", "nibabel", "numpy", "pandas",
+                            "formencode", "gevent", "h5py", "Jinja2<2.12.0", "nibabel", "numpy", "pandas",
                             "Pillow", "psutil", "pyAesCrypt", "python-keycloak", "requests", "scikit-learn",
                             "scipy", "simplejson", "six", "sqlalchemy", "tvb-data", "tvb-gdist",
                             "tvb-library", "tvb-storage", "werkzeug"]
